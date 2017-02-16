@@ -1,6 +1,6 @@
 {
-  "name": "angular-gulp-setup",
-  "description": "A example stack with gulp and angular",
+  "name": "tip-jar-for-spotify",
+  "description": "tip jar for spotify",
   "main": "index.js",
   "authors": [
     "charliegavins <charlie.gavins@neonseed.com>"
