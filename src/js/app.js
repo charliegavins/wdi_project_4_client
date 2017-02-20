@@ -1,1 +1,7 @@
-// app.js is the main JS file which you should define your Angular module
+angular
+  .module('tipJar', [
+    'ui.router',
+    'ngResource',
+    'ui.bootstrap',
+    'angular-jwt'
+  ]);

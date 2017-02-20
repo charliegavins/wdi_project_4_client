@@ -1,0 +1,15 @@
+<h1>home test</h1>
+
+<form ng-submit="home.spotifySearch()">
+  <div class="form-group">
+    <input class="form-control" type="search" name="search" ng-model="home.spotifySearch.entry" placeholder="search" required>
+  </div>
+  <button ng-click="home.spotifyArtist()" type="button" name="artist">artist</button>
+  <button ng-click="home.spotifyTrack()" type="button" name="artist">track</button>
+  <button ng-click="home.spotifyAlbum()" type="button" name="artist">album</button>
+</form>
+<ul>
+  <li ng-repeat="entry in home.SearchResults | limitTo:5">
+    <a ng-click="home.spotifySelection(entry)">{{entry.name}}</a>
+  </li>
+</ul>

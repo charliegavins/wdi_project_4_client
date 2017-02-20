@@ -1,13 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="tipJar">
   <head>
     <meta charset="utf-8">
-    <title>Angular Stack Setup</title>
+    <title>Tip Jar</title>
+      <base href="/" />
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
   </head>
   <body>
+      <header>
+        <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home"><img class="navBrand" src="/images/clubMate(Orange).png" alt=""></a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li ng-show="main.user"><a ui-sref="eventsCreate">Add Event</a></li>
+              <li ng-show="main.user"><a ui-sref="eventsIndex">Browse Events</a></li>
+              <li ng-show="main.user" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ main.user.firstName }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ui-sref="usersShow({ id: main.user._id })">Profile</a>
+                  </li>
+                  <li>
+                    <a ui-sref="usersEvents({ id: main.user._id })">My Events</a>
+                  </li>
+                  <li>
+                    <a ui-sref="usersRequests({ id: main.user._id })">Pending Requests</a>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a ng-click="main.logout()">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+      </header>
+        <main ui-view></main>
   </body>
 </html>
