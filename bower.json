@@ -1,9 +1,9 @@
 {
-  "name": "wdi-project-3",
-  "description": "WDI Group Project",
+  "name": "tip-jar",
+  "description": "tip-jar",
   "main": "index.js",
   "authors": [
-    "sarahmendham <sarahemendham@gmail.com>"
+    "charliegavins <charlesgavins@gmail.com>"
   ],
   "license": "ISC",
   "homepage": "",
@@ -21,7 +21,7 @@
     "bootstrap": "^3.3.7",
     "angular-resource": "^1.5.8",
     "angular-animate": "^1.6.1",
-    "angular-bootstrap": "^2.5.0",
+    "angular-bootstrap": "^2.5.0"
   },
   "overrides": {
     "bootstrap": {

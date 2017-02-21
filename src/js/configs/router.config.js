@@ -21,6 +21,13 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
     controllerAs: 'transactionsCreate'
   });
   $stateProvider
+  .state('transactionsComplete', {
+    url: '/transactions/complete',
+    templateUrl: '/js/views/transactions/complete.html',
+    controller: 'TransactionsCompleteCtrl',
+    controllerAs: 'transactionsComplete'
+  });
+  $stateProvider
   .state('register', {
     url: '/register',
     templateUrl: '/js/views/register.html',

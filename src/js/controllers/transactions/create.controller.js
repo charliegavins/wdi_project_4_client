@@ -2,9 +2,9 @@ angular
 .module('tipJar')
 .controller('TransactionsCreateCtrl', TransactionsCreateCtrl);
 
-TransactionsCreateCtrl.$inject = ['TipRecipient'];
+TransactionsCreateCtrl.$inject = ['TipRecipient','API', '$http','CurrentTransaction', '$state'];
 
-function TransactionsCreateCtrl(TipRecipient){
+function TransactionsCreateCtrl(TipRecipient, API, $http, CurrentTransaction, $state){
   const vm = this;
   vm.create = formCreate;
 
@@ -19,18 +19,21 @@ function TransactionsCreateCtrl(TipRecipient){
     vm.transaction.recipient_name = tipRecipient.name;
     vm.transaction.recipient_img = tipRecipient.images[0].url;
     vm.transaction.payment_status = 'pending';
-    console.log(vm.transaction);
+    transactionCreate();
+
   }
 
   function transactionCreate(){
-    return $http({
+      return $http({
       method: 'POST',
-      url: 'http://localhost:4000/transactions',
+      url: `${API}/transactions`,
       data: vm.transaction
     })
-    .$promise
-    .then((response) => {
+    .then(function success(data){
+      CurrentTransaction.setTransaction(data);
+      $state.go('transactionsComplete');
+    }, function errorCallback(response) {
       console.log(response);
-  });
-  };
+    });
+  }
 }

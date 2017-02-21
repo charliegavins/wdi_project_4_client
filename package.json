@@ -1,7 +1,7 @@
 {
-  "name": "wdi_project_4_client",
+  "name": "tip-jar",
   "version": "1.0.0",
-  "description": "",
+  "description": "tip jar",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -62,6 +62,7 @@
     "async": "^2.1.4",
     "aws-sdk": "^2.9.0",
     "bcrypt": "^1.0.2",
+    "block_io": "^1.0.9-2",
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
