@@ -25,6 +25,8 @@ vm.spotifySelection = function(id){
 }
 
   vm.spotifySearch = () => {
+    console.log(vm.spotifySearch.entry);
+    console.log(vm.searchParams);
     $http.get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=${vm.searchParams}`).then((data, err) => {
       let param = data.data[`${vm.searchParams}s`];
       vm.SearchResults = param.items;

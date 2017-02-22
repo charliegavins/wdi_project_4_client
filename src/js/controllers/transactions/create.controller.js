@@ -2,9 +2,9 @@ angular
 .module('tipJar')
 .controller('TransactionsCreateCtrl', TransactionsCreateCtrl);
 
-TransactionsCreateCtrl.$inject = ['TipRecipient','API', '$http','CurrentTransaction', '$state'];
+TransactionsCreateCtrl.$inject = ['$rootScope','TipRecipient','API', '$http','CurrentTransaction', '$state', 'ActionCableCtrl'];
 
-function TransactionsCreateCtrl(TipRecipient, API, $http, CurrentTransaction, $state){
+function TransactionsCreateCtrl(TipRecipient, API, $http, CurrentTransaction, $state, $rootScope, ActionCableCtrl){
   const vm = this;
   vm.create = formCreate;
 
@@ -30,6 +30,7 @@ function TransactionsCreateCtrl(TipRecipient, API, $http, CurrentTransaction, $s
       data: vm.transaction
     })
     .then(function success(data){
+      // ActionCableCtrl.confirmation;
       CurrentTransaction.setTransaction(data);
       $state.go('transactionsComplete');
     }, function errorCallback(response) {
