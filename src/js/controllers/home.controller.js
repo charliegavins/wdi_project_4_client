@@ -1,37 +1,47 @@
 angular
-  .module('tipJar')
-  .controller('HomeCtrl', HomeCtrl);
+.module('tipJar')
+.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['$state', '$resource','$http','TipRecipient'];
-function HomeCtrl($state, $resource, $http, TipRecipient) {
+HomeCtrl.$inject = ['$state', '$resource','$http','API'];
+function HomeCtrl($state, $resource, $http, API) {
 
   const vm = this;
-  vm.searchParams = ''
-
-vm.spotifyAlbum = () => {
-  vm.searchParams = 'album';
-}
-vm.spotifyArtist = () => {
-  vm.searchParams = 'artist';
-}
-vm.spotifyTrack = () => {
-  vm.searchParams = 'track';
-}
-
-vm.spotifySelection = function(id){
-  vm.spotiId = id;
-  TipRecipient.setRecipient(id);
-    $state.go('transactionsCreate');
-}
 
   vm.spotifySearch = () => {
-    console.log(vm.spotifySearch.entry);
-    console.log(vm.searchParams);
-    $http.get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=${vm.searchParams}`).then((data, err) => {
-      let param = data.data[`${vm.searchParams}s`];
-      vm.SearchResults = param.items;
+    $http
+      .get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=${vm.searchParams}`)
+      .then(data => {
+        const param = data.data[`${vm.searchParams}s`];
+        vm.SearchResults = param.items;
+      }, err => {
+        console.error(err);
+      });
+  };
+
+  vm.spotifySelection = (artist) => {
+    vm.artist = artist;
+    vm.artist.image = vm.artist.images[0].url;
+  };
+
+  vm.createTransaction = () => {
+    const transaction = {
+      recipient_url: vm.artist.href,
+      recipient_name: vm.artist.name,
+      recipient_img: vm.artist.image,
+      payment_status: 'pending',
+      amount: vm.transaction.amount,
+      message: vm.transaction.message
+    };
+
+    return $http({
+      method: 'POST',
+      url: `${API}/transactions`,
+      data: transaction
+    })
+    .then(function success(response){
+      vm.pendingTransaction = response.data;
+    }, function errorCallback(response) {
+      console.log(response);
     });
   };
-vm.spotifySearch
-
 }

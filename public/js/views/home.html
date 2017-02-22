@@ -1,17 +1,56 @@
-      <div class="container">
-<h1>home test</h1>
+<section class="container" ng-if="!home.artist">
+  <h1>Step 1. Find and artist to tip</h1>
+  <form ng-submit="home.spotifySearch()">
+    <div class="form-group">
+      <input class="form-control" type="search" name="search" ng-model="home.spotifySearch.entry" placeholder="Enter something to search, e.g. 'Gorillaz'" required>
+    </div>
+    <div class="btn-group btn-group-justified">
+      <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'artist'">Artist</label>
+      <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'album'">Album</label>
+      <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'track'">Track</label>
+    </div>
 
-<form ng-submit="home.spotifySearch()">
-  <div class="form-group">
-    <input class="form-control" type="search" name="search" ng-model="home.spotifySearch.entry" placeholder="search" required>
-  </div>
-  <button ng-click="home.spotifyArtist()" type="button" name="artist">artist</button>
-  <button ng-click="home.spotifyTrack()" type="button" name="artist">track</button>
-  <button ng-click="home.spotifyAlbum()" type="button" name="artist">album</button>
-</form>
-<ul>
-  <li ng-repeat="entry in home.SearchResults | limitTo:5">
-    <a ng-click="home.spotifySelection(entry)">{{entry.name}}</a>
-  </li>
-</ul>
-</div>
+    <br>
+
+    <input class="btn btn-primary btn-lg btn-block" type="submit" value="search">
+  </form>
+
+  <h2 ng-if="home.SearchResults">Results</h2>
+  <ul class="list-unstyled">
+    <li ng-repeat="entry in home.SearchResults | limitTo:5">
+      <a ng-click="home.spotifySelection(entry)"><h3>{{entry.name}}</h3></a>
+    </li>
+  </ul>
+</section>
+
+<section class="container" ng-if="home.artist && !home.pendingTransaction">
+  <h2>Step 1. Choose amount and a message</h2>
+  <h4>You've picked {{ home.artist.name }}</h4>
+  <img src="{{ home.artist.image }}" width="150">
+
+  <br>
+
+  <form ng-submit="home.createTransaction()">
+    <input
+      type="integer"
+      class="form-control"
+      ng-model="home.transaction.amount"
+      value=""
+      placeholder="amount">
+    <br>
+
+    <textarea
+      class="form-control"
+      ng-model="home.transaction.message"
+      placeholder="message"></textarea>
+    <br>
+
+    <input type="submit" class="btn btn-default btn-block" value="Proceed to payment">
+  </form>
+</section>
+
+<section class="container" ng-if="home.pendingTransaction">
+  <h2>Step 3. Processing...</h2>
+  <img ng-src="{{ home.pendingTransaction.qr_image_url }}" width="250">
+  {{ home.pendingTransaction }}
+</section>

@@ -7,12 +7,12 @@ function UserRegisterCtrl($state, $http, User) {
   const vm = this;
 
   vm.register = () => {
-  User
+    User
   .register(vm.user).$promise
   .then(data => {
     $rootScope.$broadcast('loggedIn');
   }, err => {
     console.log(err);
   });
-};
+  };
 }

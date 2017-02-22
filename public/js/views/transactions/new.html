@@ -1,18 +1,17 @@
-      <div class="container">
-
-<img src="{{ transactionsCreate.recipientImage }}" width="150" alt="">
-<h4>You've picked {{ transactionsCreate.recipientName }}</h4>
-<form ng-submit="transactionsCreate.create()">
-<input type="integer" class="form-control" name="amount" ng-model="transactionsCreate.transaction.amount" value="" placeholder="amount">
-<br>
-<input type="text" class="form-control" name="message" ng-model="transactionsCreate.transaction.message" value="" placeholder="message">
-<br>
-<input type="hidden" class="form-control" name="recipient_url" ng-model="transactionsCreate.transaction.recipient_url" ng-value="{{ transactionsCreate.recipientUrl }}">
-<br>
-<input type="hidden" class="form-control" name="recipient_name" ng-model="transactionsCreate.transaction.recipient_name" ng-value="{{ transactionsCreate.recipientName }}">
-<br>
-<!-- <input type="hidden" class="form-control" name="user_id" ng-model="transactionsCreate.transaction.user_id" value="">
-<br> -->
-<input type="submit" class="btn btn-default btn-block" value="proceed to payment">
-</form>
-</div>
+<!-- <section class="container">
+  <img src="{{ transactionsCreate.recipientImage }}" width="150" alt="">
+  <h4>You've picked {{ transactionsCreate.recipientName }}</h4>
+  <form ng-submit="transactionsCreate.create()">
+    <input type="integer" class="form-control" name="amount" ng-model="transactionsCreate.transaction.amount" value="" placeholder="amount">
+    <br>
+    <input type="text" class="form-control" name="message" ng-model="transactionsCreate.transaction.message" value="" placeholder="message">
+    <br>
+    <input type="hidden" class="form-control" name="recipient_url" ng-model="transactionsCreate.transaction.recipient_url" ng-value="{{ transactionsCreate.recipientUrl }}">
+    <br>
+    <input type="hidden" class="form-control" name="recipient_name" ng-model="transactionsCreate.transaction.recipient_name" ng-value="{{ transactionsCreate.recipientName }}">
+    <br>
+    <input type="hidden" class="form-control" name="user_id" ng-model="transactionsCreate.transaction.user_id" value="">
+    <br>
+    <input type="submit" class="btn btn-default btn-block" value="proceed to payment">
+  </form>
+</section> -->
