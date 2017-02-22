@@ -51,6 +51,16 @@
 
 <section class="container" ng-if="home.pendingTransaction">
   <h2>Step 3. Processing...</h2>
-  <img ng-src="{{ home.pendingTransaction.qr_image_url }}" width="250">
+
+  <h4>
+    <span ng-show="home.status.connected">✓ Connected</span>
+    <span ng-show="home.status.disconnected">✘ Disconnected</span>
+    <span ng-show="home.status.connecting">✘ Connecting...</span>
+  </h4>
+
+  <img ng-class="{ 'complete': !!home.complete }" ng-src="{{ home.pendingTransaction.qr_image_url }}" width="250">
+
+  <button ng-click="home.checkConnection()">Check</button>
+
   {{ home.pendingTransaction }}
 </section>

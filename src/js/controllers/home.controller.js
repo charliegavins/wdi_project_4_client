@@ -2,9 +2,23 @@ angular
 .module('tipJar')
 .controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ['$state', '$resource','$http','API'];
-function HomeCtrl($state, $resource, $http, API) {
+HomeCtrl.$inject = [
+  '$state',
+  '$resource',
+  '$http',
+  'API',
+  'ActionCableChannel',
+  'ActionCableSocketWrangler'
+];
 
+function HomeCtrl(
+  $state,
+  $resource,
+  $http,
+  API,
+  ActionCableChannel,
+  ActionCableSocketWrangler
+) {
   const vm = this;
 
   vm.spotifySearch = () => {
@@ -40,8 +54,39 @@ function HomeCtrl($state, $resource, $http, API) {
     })
     .then(function success(response){
       vm.pendingTransaction = response.data;
+
+      // Connect to ActionCable - DRY UP LATER
+      const consumer = new ActionCableChannel('TransactionsChannel', {
+        id: vm.pendingTransaction.id
+      });
+
+      vm.status = ActionCableSocketWrangler;
+
+      vm.checkConnection = () => {
+        consumer.send('generic');
+        consumer.send('Hello', 'pending_transaction_started');
+      };
+
+      function callback(message){
+        console.log('RECEIVED', message);
+        if (message.payment_status && message.payment_status === 'complete') {
+          vm.complete = true;
+        }
+      }
+
+      consumer
+      .subscribe(callback)
+      .then(function(){
+        // $scope.$on("$destroy", function(){
+        //   consumer.unsubscribe().then(function(){
+        //     $scope.sendToMyChannel = undefined;
+        //   });
+        // });
+      });
+
     }, function errorCallback(response) {
       console.log(response);
     });
   };
+
 }
