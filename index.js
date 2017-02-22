@@ -1,7 +1,9 @@
 const express = require('express');
+const BlockIo = require('block_io');
 const port    = process.env.PORT || 3000;
 const app     = express();
 const dest    = `${__dirname}/public`;
+
 
 app.use(express.static(dest));
 
