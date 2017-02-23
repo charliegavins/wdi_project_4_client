@@ -4,8 +4,23 @@
   <img class="brandImgSml" ng-if="false" src="/images/logo.png" alt="">
 </div>
 
+<section class="animated fadeIn" ng-if="!home.begin">
+  <div class="welcomeMessage">
+    <h3>Welcome to bitip.<br><br>
+    This widget has been hand built to allow the direct delivery of financial support to the artists you love.
+  <br><br>
+  No matter how you consume music we believe that there should be a way to support the music makers. Join us!
+  <br><br>
+  We use bitcoin only to ensure low transaction fees, zero middlemen and provide a permanent record of your generosity.</h3>
+  </div>
+<form ng-submit="home.getStarted()">
+    <input type="submit"  class="btn btn-default btn-block startButton" value="Get started">
+</form>
+</section>
+  <section>
+
 <!-- <section class="animated fadeIn step1" ng-if="false"> -->
-<section class="animated fadeIn step1" ng-if="!home.SearchResults">
+<section class="animated fadeIn step1" ng-if="!home.SearchResults && home.begin">
   <h1>Step 1.</h1>
   <h2>Find your beloved artist:</h2>
   <form ng-submit="home.spotifySearch()">
@@ -28,10 +43,15 @@
     <h1>Step 2.</h1>
     <h2>Select from results:</h2>
     <ul class="list-unstyled">
-      <li ng-repeat="entry in home.SearchResults | limitTo:9">
-        <a ng-click="home.spotifySelection(entry)"><div class="artistListImgDiv">
+      <li ng-repeat="entry in home.SearchResults | limitTo:5">
+        <div class="searchItemWrap">
+        <div class="artistListImgDiv">
+        <a ng-click="home.spotifySelection(entry)">
           <img class="artistListImg" ng-src="{{entry.images[0].url}}" alt="">
-        </div><h5>{{entry.name}}</h5></a>
+        </a>
+      </div>
+        <a ng-click="home.spotifySelection(entry)"><h5 class="artistListName">{{entry.name}}</h5></a>
+                  </div>
       </li>
     </ul>
   </section>
@@ -82,7 +102,7 @@
 <div class="step4InfoDiv">
   <h1 ng-if="!home.complete">Step 4.</h1>
   <h2 ng-if="!home.complete">Process payment:</h2>
-  <h1 ng-if="home.complete">Thank you!</h1>
+  <!-- <h1 ng-if="home.complete">Thank you!</h1> -->
 </div>
 
 

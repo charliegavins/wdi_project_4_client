@@ -17,7 +17,8 @@
   margin: 0px auto;
 }
 .qrCode{
-  position: absolute;
+  width: 240px;
+  // position: absolute;
 }
 body{
   background-color: white;
@@ -147,17 +148,39 @@ textarea{
   max-width: 100%;
   height: auto;
   text-align: center;
-  margin: 10px;
+    display: inline-block;
+}
+.artistListName{
+  display: inline-block;
+  color: #90cf8b;
+      font-size: 30px;
+      height: 100%;
+      width: 78%;
+      vertical-align: middle;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      top: -37px;
+  background-color: rgb(252, 251, 242);
+}
+.list-unstyled{
+  margin: 10px 0;
+}
+.searchItemWrap{
+  height: 80px;
+  margin: 2px 0;
 }
 .artistListImgDiv{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
+  border-radius: 5px;
+    display: inline-block;
 }
-ul li{
-  display: block;
-  float: left;
-}
+// ul li{
+//   display: block;
+//   float: left;
+// }
 .qrImgDiv{
   width: 250px;
   height: 250px;
@@ -178,8 +201,22 @@ ul li{
   margin: 0px 5px 5px 5px;
 }
 .paymentConfirmationMessage{
+  position: relative;
+  bottom: 190px;
   background-color:#90cf8b;
   padding: 10px;
+}
+.startButton{
+  width: 150px !important;
+  background-color: #90cf8b;
+  margin: 0 auto;
+}
+.startButton:hover{
+  width: 100px;
+  background-color: #689665;
+}
+.welcomeMessage{
+  margin: 40px 0 40px 0;
 }
 .step4InfoDiv{
   height: 100px;

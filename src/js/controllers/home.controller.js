@@ -23,6 +23,10 @@ function HomeCtrl(
   vm.currencyParams = 'GBP';
   vm.step3 = false;
 
+  vm.getStarted = () => {
+    vm.begin = true;
+  };
+
   vm.spotifySearch = () => {
     $http
       .get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=artist`)
