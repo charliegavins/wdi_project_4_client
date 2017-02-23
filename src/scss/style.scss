@@ -2,3 +2,57 @@
 .complete {
   border: 3px solid green;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+.currency{
+  width: 25%;
+}
+.brandImg{
+  text-align: center;
+  margin: 60px auto;
+}
+body{
+  background-color: rgb(230, 230, 230);
+  background: url('/images/lightgopro.jpg') no-repeat center center fixed;
+    background-size: cover;
+  margin: none;
+  padding: none;
+}
+html{
+  margin: none;
+  padding: none;
+}
+.artistSearch{
+  margin: 25px auto;
+  border: none;
+  border-bottom: 2px solid rgb(113, 113, 113);
+  font-size: 40px;
+  padding: 10px;
+  line-height: 60px;
+  height: 25%;
+  color: none;
+}
+.artistSearch:focus{
+  border-bottom: 4px solid #90cf8b;
+}
+.daddyDiv{
+  padding: 50px;
+  background-color: rgb(230, 230, 230);
+}
+.artworkCredit{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 16px;
+  color: rgb(198, 198, 198);
+  padding: 10px;
+}
+.artworkCredit:hover{
+text-decoration: none;
+}
+.artworkCredit:focus{
+text-decoration: none;
+}

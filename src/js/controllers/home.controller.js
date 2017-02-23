@@ -23,9 +23,9 @@ function HomeCtrl(
 
   vm.spotifySearch = () => {
     $http
-      .get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=${vm.searchParams}`)
+      .get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=artist`)
       .then(data => {
-        const param = data.data[`${vm.searchParams}s`];
+        const param = data.data[`artists`];
         vm.SearchResults = param.items;
       }, err => {
         console.error(err);
@@ -37,7 +37,24 @@ function HomeCtrl(
     vm.artist.image = vm.artist.images[0].url;
   };
 
+  vm.getBTCrates = () => {
+    $http
+    .get(`${API}/exchange`)
+        .then(data => {
+          vm.btcToGbp = data.data.response.body.GBP['15m'];
+          vm.btcToUsd = data.data.response.body.USD['15m'];
+          vm.btcToEur = data.data.response.body.EUR['15m'];
+          vm.btcGbpXrate = (1/vm.btcToGbp);
+          vm.btcUsdXrate = (1/vm.btcToUsd);
+          vm.btcEurXrate = (1/vm.btcToEur);
+        }, err => {
+          console.error(err);
+        });
+  };
+  vm.getBTCrates();
+
   vm.createTransaction = () => {
+
     const transaction = {
       recipient_url: vm.artist.href,
       recipient_name: vm.artist.name,
@@ -46,6 +63,8 @@ function HomeCtrl(
       amount: vm.transaction.amount,
       message: vm.transaction.message
     };
+
+    vm.transaction.amount = (vm.fiatAmount)*(vm.BTCtoUSD);
 
     return $http({
       method: 'POST',
