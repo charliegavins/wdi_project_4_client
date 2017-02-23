@@ -1,18 +1,18 @@
 
-      <section ng-if="!home.SearchResults">
+      <section class="animated fadeIn" ng-if="!home.SearchResults">
         <h1>Step 1.</h1>
         <h2>Find your beloved artist:</h2>
         <form ng-submit="home.spotifySearch()">
           <div class="form-group">
             <input class="form-control artistSearch" autofocus="autofocus" type="search" name="search" ng-model="home.spotifySearch.entry" placeholder="Enter the artist name" required>
           </div>
-          <!-- <div class="btn-group btn-group-justified"> -->
-            <!-- <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'artist'">Artist</label> -->
-            <!-- <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'album'">Album</label>
-            <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'track'">Track</label> -->
-          <!-- </div> -->
+          <!-- <div class="btn-group btn-group-justified">
+            <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'artist'">Artist</label>
+            <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'album'">Album</label>
+            <label class="btn btn-default" ng-model="home.searchParams" uib-btn-radio="'track'">Track</label>
+          </div> -->
 
-          <!-- <br> -->
+          <br>
 
           <!-- <input class="btn btn-primary btn-lg btn-block" type="submit" value="search"> -->
         </form>
@@ -28,7 +28,7 @@
       </ul>
     </section>
   </section>
-      <section ng-if="home.artist && !home.pendingTransaction">
+      <section class="animated fadeIn" ng-if="home.artist && !home.pendingTransaction">
         <h1>Step 3.</h1>
         <h2>Select amount and write a message:</h2>
         <h4>You've picked {{ home.artist.name }}</h4>
@@ -36,22 +36,17 @@
         <br>
         <form ng-submit="home.createTransaction()">
           <input
-            type="number"
+            type="integer"
             class="form-control"
-            ng-model="home.fiatAmount"
+            ng-model="home.transaction.amount"
             value=""
             placeholder="amount">
           <br>
-          <div class="btn-group btn-group-justified currency">
+          <div class="btn-group btn-group-justified">
             <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'GBP'">£</label>
             <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'USD'">$</label>
             <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'EUR'">€</label>
           </div>
-
-          <span ng-bind-html="home.fiatAmount | currency:home.currencyParams"></span>
-          <p>{{ home.currencyParams }}</p>
-          <p>{{ home.fiatAmount }}</p>
-          <p>{{ home.Gbp }}</p>
           <textarea
             class="form-control"
             ng-model="home.transaction.message"
@@ -66,7 +61,7 @@
 
 
 
-<section ng-if="home.pendingTransaction">
+<section class="animated fadeIn" ng-if="home.pendingTransaction">
 
   <h1>Step 4.</h1>
   <h2>Process payment:</h2>
@@ -79,9 +74,9 @@
 
   <img ng-class="{ 'complete': !!home.complete }" ng-src="{{ home.pendingTransaction.qr_image_url }}" width="250">
 
-  <!-- <button ng-click="home.checkConnection()">Check</button>
-
-  {{ home.pendingTransaction }} -->
+  <!-- <button ng-click="home.checkConnection()">Check</button> -->
+<br>
+  <img src="/images/435px-Btc-sans.png" width="15px" alt="">{{ home.pendingTransaction.amount/100000000 }}
 
 </section>
 <a class="artworkCredit" ng-href="http://jamesturrell.com/work/date/">Artwork: James Turrell - The Light Inside</a>

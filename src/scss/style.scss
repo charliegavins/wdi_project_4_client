@@ -41,6 +41,7 @@ html{
 .daddyDiv{
   padding: 50px;
   background-color: rgb(230, 230, 230);
+  height:100vh;
 }
 .artworkCredit{
   position: fixed;
@@ -55,4 +56,7 @@ text-decoration: none;
 }
 .artworkCredit:focus{
 text-decoration: none;
+}
+textarea{
+  resize: none;
 }
