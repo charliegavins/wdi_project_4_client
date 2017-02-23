@@ -21,6 +21,7 @@ function HomeCtrl(
 ) {
   const vm = this;
   vm.currencyParams = 'GBP';
+  vm.step3 = false;
 
   vm.spotifySearch = () => {
     $http
@@ -28,13 +29,16 @@ function HomeCtrl(
       .then(data => {
         const param = data.data[`artists`];
         vm.SearchResults = param.items;
+        console.log(param);
       }, err => {
         console.error(err);
       });
   };
 
   vm.spotifySelection = (artist) => {
+    console.log(vm.pendingTransaction);
     vm.artist = artist;
+    console.log(vm.artist);
     vm.artist.image = vm.artist.images[0].url;
   };
 
@@ -100,6 +104,7 @@ function HomeCtrl(
       function callback(message){
         console.log('RECEIVED', message);
         if (message.payment_status && message.payment_status === 'complete') {
+          console.log('payment complete');
           vm.complete = true;
         }
       }
