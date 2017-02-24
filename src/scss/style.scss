@@ -2,6 +2,18 @@
 .complete {
   border: 3px solid green;
 }
+.charlieTipRequestLink:hover{
+  color: #faffbd;
+  text-decoration: none;
+}
+.charlieTipRequestLink{
+  color: #90cf8b;
+  text-decoration: none;
+}
+.transactionCompletionDiv a:hover{
+  color: #faffbd;
+  text-decoration: none;
+}
 .col-centered{
     float: none;
     margin: 0 auto;
@@ -104,12 +116,17 @@ textarea{
 }
 .currencyButtons{
   margin: 5px auto;
-    width: 48%;
-    float: right;
+  width: 29%;
+  float: left;
+}
+.email{
+      margin: 5px auto;
+      width: 48%;
+      float: right;
 }
 .currencyInput{
     margin: 5px auto;
-  width: 48%;
+  width: 20%;
       float: left;
 }
 .form-control:focus {
@@ -163,6 +180,9 @@ textarea{
       top: -37px;
   background-color: rgb(252, 251, 242);
 }
+.artistListName:hover{
+  background-color: #faffbd;
+}
 .list-unstyled{
   margin: 10px 0;
 }
@@ -185,11 +205,14 @@ textarea{
   width: 250px;
   height: 250px;
   background-color: grey;
-  margin: 20px auto;
+  margin: 0px auto;
   border: solid 5px #90cf8b;
   border-radius: 3px;
   text-align: center;
   vertical-align:middle;
+}
+a{
+  color:#90cf8b;
 }
 .btcAmountDiv{
   margin: 0 auto;
@@ -206,14 +229,55 @@ textarea{
   background-color:#90cf8b;
   padding: 10px;
 }
+
+textarea{
+  width: 75%;
+float: right;
+}
+
 .startButton{
-  width: 150px !important;
+  width: 200px !important;
   background-color: #90cf8b;
   margin: 0 auto;
+  font-size: 25px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
 }
+.paymentButton{
+  background-color: #90cf8b;
+  margin: 0 auto;
+  font-size: 25px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  width: 300px;
+}
+[ng-click]{
+    cursor: pointer;
+}
+
+
 .startButton:hover{
-  width: 100px;
-  background-color: #689665;
+  width: 200px;
+  background-color: #faffbd;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+.paymentButton:hover{
+  background-color: #faffbd;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
 }
 .welcomeMessage{
   margin: 40px 0 40px 0;

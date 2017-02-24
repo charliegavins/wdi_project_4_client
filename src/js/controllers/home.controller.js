@@ -8,7 +8,8 @@ HomeCtrl.$inject = [
   '$http',
   'API',
   'ActionCableChannel',
-  'ActionCableSocketWrangler'
+  'ActionCableSocketWrangler',
+  '$window'
 ];
 
 function HomeCtrl(
@@ -17,7 +18,8 @@ function HomeCtrl(
   $http,
   API,
   ActionCableChannel,
-  ActionCableSocketWrangler
+  ActionCableSocketWrangler,
+  $window
 ) {
   const vm = this;
   vm.currencyParams = 'GBP';
@@ -25,6 +27,20 @@ function HomeCtrl(
 
   vm.getStarted = () => {
     vm.begin = true;
+  };
+
+  vm.selfTip = () => {
+    // vm.wholeAppMute = true;
+    console.log('clicky working');
+    vm.pendingTransaction = false;
+    vm.complete = false;
+    vm.artist = {};
+    vm.artist.name = 'Charlie Gavins';
+    vm.artist.image = 'https://s2.postimg.org/z13tlm83d/imgforbitip.png';
+  };
+
+  vm.reload = () => {
+    $window.location.reload();
   };
 
   vm.spotifySearch = () => {
@@ -80,6 +96,7 @@ function HomeCtrl(
       recipient_url: vm.artist.href,
       recipient_name: vm.artist.name,
       recipient_img: vm.artist.image,
+      email: vm.transaction.email,
       payment_status: 'pending',
       amount: vm.btcAmount,
       message: vm.transaction.message

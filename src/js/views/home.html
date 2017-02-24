@@ -1,9 +1,7 @@
 <div class="brandImgDiv">
-  <a ng-href="http://localhost:3000"><img class="brandImgLrg" ng-if="true" src="/images/logo.png" alt=""></a>
-
+  <img class="brandImgLrg" ng-click="home.reload()" ng-if="true" src="/images/logo.png" alt="">
   <img class="brandImgSml" ng-if="false" src="/images/logo.png" alt="">
 </div>
-
 <section class="animated fadeIn" ng-if="!home.begin">
   <div class="welcomeMessage">
     <h3>Welcome to bitip.<br><br>
@@ -11,13 +9,12 @@
   <br><br>
   No matter how you consume music we believe that there should be a way to support the music makers. Join us!
   <br><br>
-  We use bitcoin only to ensure low transaction fees, zero middlemen and provide a permanent record of your generosity.</h3>
+  We use bitcoin to ensure low transaction fees, zero middlemen and a permanent record of your generosity.</h3>
   </div>
 <form ng-submit="home.getStarted()">
     <input type="submit"  class="btn btn-default btn-block startButton" value="Get started">
 </form>
 </section>
-  <section>
 
 <!-- <section class="animated fadeIn step1" ng-if="false"> -->
 <section class="animated fadeIn step1" ng-if="!home.SearchResults && home.begin">
@@ -71,24 +68,30 @@
   </div>
   <br>
   <form ng-submit="home.createTransaction()">
+    <div class="btn-group btn-group-justified currencyButtons">
+      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'GBP'">£</label>
+      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'USD'">$</label>
+      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'EUR'">€</label>
+    </div>
     <input
     type="integer"
     class="form-control currencyInput"
     ng-model="home.transaction.amount"
     value=""
     placeholder="amount">
-    <div class="btn-group btn-group-justified currencyButtons">
-      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'GBP'">£</label>
-      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'USD'">$</label>
-      <label class="btn btn-default" ng-model="home.currencyParams" uib-btn-radio="'EUR'">€</label>
-    </div>
+    <input
+    type="email"
+    class="form-control email"
+    ng-model="home.transaction.email"
+    value=""
+    placeholder="email">
     <textarea
     class="form-control"
     ng-model="home.transaction.message"
     placeholder="message"></textarea>
     <br>
 
-    <input type="submit"  class="btn btn-default btn-block" value="Proceed to payment">
+    <input type="submit"  class="btn btn-default btn-block paymentButton" value="Proceed to payment">
   </form>
 </section>
 
@@ -126,8 +129,8 @@
   <h4>Use the above code to process your payment. It may take up to half a minute to register on the blockchain so please be patient!</h4>
 </div>
 <div ng-if="home.complete" class="transactionCompletionDiv">
-  <h4>Thank you so much for your donation - our <a ng-href="http://www.twitter.com/charliegavins" target="_blank">elf</a> is working hard to get it to the intended recipient as soon as possible.
-    <br><br>Please come again soon - or refresh the page to go again!</h4>
+  <h4>Thank you so much for your donation - our <a ng-href="http://www.twitter.com/charliegavins" target="_blank">elf</a> is working hard to get it to the intended recipient as soon as possible.</h4>
+    <br><h4>If you have enjoyed using the app drop us a tip <span class="charlieTipRequestLink" ng-click="home.selfTip()">here</span> so we can build more things!</h4>
 </div>
 
 </section>
