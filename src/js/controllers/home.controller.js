@@ -30,6 +30,7 @@ function HomeCtrl(
   };
 
   vm.selfTip = () => {
+    vm.transaction = {};
     // vm.wholeAppMute = true;
     console.log('clicky working');
     vm.pendingTransaction = false;
