@@ -1,6 +1,6 @@
 {
-  "name": "tip-jar",
-  "description": "tip-jar",
+  "name": "bitip",
+  "description": "artist tip jar",
   "main": "index.js",
   "authors": [
     "charliegavins <charlesgavins@gmail.com>"
