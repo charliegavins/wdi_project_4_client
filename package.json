@@ -59,6 +59,8 @@
     }
   },
   "dependencies": {
+    "gulp-load-plugins": "~1.2.0",
+       "run-sequence": "~1.1.5",
     "angular-touch": "^1.6.1",
     "async": "^2.1.4",
     "aws-sdk": "^2.9.0",
