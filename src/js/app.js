@@ -4,6 +4,5 @@ angular
     'ngResource',
     'angular-jwt',
     'ngActionCable',
-    'ui.bootstrap',
-    'mgo-angular-wizard'
+    'ui.bootstrap'
   ]);
