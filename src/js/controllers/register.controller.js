@@ -2,8 +2,8 @@ angular
   .module('tipJar')
   .controller('UserRegisterCtrl', UserRegisterCtrl);
 
-UserRegisterCtrl.$inject = ['$state', '$http','User'];
-function UserRegisterCtrl($state, $http, User) {
+UserRegisterCtrl.$inject = ['$rootScope','$state', '$http','User'];
+function UserRegisterCtrl($rootScope, $state, $http, User) {
   const vm = this;
 
   vm.register = () => {
