@@ -1,3 +1,3 @@
 angular
   .module('tipJar')
-  .constant('API', `https://bitip-api.fart.com`);
+  .constant('API', `https://bitip-api.herokuapp.com`);
