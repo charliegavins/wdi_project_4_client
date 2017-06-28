@@ -44,11 +44,27 @@ function HomeCtrl(
     $window.location.reload();
   };
 
-  vm.spotifySearch = () => {
+//the below ensures that the server has a fresh token with which to access the search endpoint of the spotify api. At the moment it loads whenever someone loads the browser - assuming very low traffic and dynamo hosting. Will need to uncomment this
+  vm.spotifyTokenLoad= () => {
     $http
-      .get(`https://api.spotify.com/v1/search?q=${vm.spotifySearch.entry}&type=artist`)
+      .get(`http://localhost:3000/spotify_token`)
       .then(data => {
-        const param = data.data[`artists`];
+        console.log(data);
+      });
+  };
+  vm.spotifyTokenLoad();
+
+  vm.spotifySearch = () => {
+    // console.log(vm.spotifySearch.entry);
+    $http({
+      method: 'GET',
+      url: `${API}/spotify_search`,
+      params: {search: vm.spotifySearch.entry}
+      //need to encode the typed in string so can be sent over params
+    })
+      .then(data => {
+        console.log(data);
+        const param = data.data.response.body[`artists`];
         vm.SearchResults = param.items;
         console.log(param);
       }, err => {
