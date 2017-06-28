@@ -47,7 +47,7 @@ function HomeCtrl(
 //the below ensures that the server has a fresh token with which to access the search endpoint of the spotify api. At the moment it loads whenever someone loads the browser - assuming very low traffic and dynamo hosting. Will need to uncomment this
   vm.spotifyTokenLoad= () => {
     $http
-      .get(`http://localhost:3000/spotify_token`)
+      .get(`${API}/spotify_token`)
       .then(data => {
         console.log(data);
       });

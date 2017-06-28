@@ -1,3 +1,3 @@
 angular
   .module('tipJar')
-  .constant('API', `http://localhost:3000`);
+  .constant('API', `https://bitip-api.herokuapp.com/`);
